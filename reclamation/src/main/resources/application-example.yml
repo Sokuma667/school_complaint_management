@@ -1,30 +1,30 @@
 spring:
   application:
     name: reclamation
-  
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/reclamations_db
-    username: ${DB_USERNAME:your_username}
-    password: ${DB_PASSWORD:your_password}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/reclamations_db}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
-  
+
   jpa:
     hibernate:
-      ddl-auto: ${DDL_AUTO:validate}
+      ddl-auto: ${DDL_AUTO:update}
     show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     defer-datasource-initialization: true
-  
+
   sql:
     init:
       mode: always
       data-locations: classpath:data.sql
 
 jwt:
-  secret: ${JWT_SECRET:your_jwt_secret_key_here}
+  secret: CHANGE_ME_WITH_32_PLUS_CHARACTERS_SECRET_KEY
   expiration: 86400000
 
 logging:
